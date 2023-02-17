@@ -1,20 +1,37 @@
 <?php
-class Base 
+class User
 {
-    function showBase()
+    public $name;
+    public $age;
+    function setValue($name,$age)
     {
-        echo " This message form base class <br/>";
+        $this->name=$name;
+        $this->age=$age;
+    }
+    function displayName()
+    {
+        echo "Hello ".$this->name." You look ";
+    }
+
+}
+class Magic extends User
+{
+    function play()
+    {
+        if($this->age<=50)
+        {
+            $this->age+=10;
+        }
+        else
+        {
+            $this->age-=10;
+        }
+        echo $this->age." Your age old.<br/>";
     }
 }
-class Derived extends Base 
-{
-    function showDerived()
-    {
-        echo " This is Derived class <br/>";
-    }
-}
-$d=new Derived();
-$d->showBase();
-$d->showDerived();
+$m=new Magic();
+$m->setValue("Ram",30);
+$m->displayName();
+$m->play();
 
 ?>
